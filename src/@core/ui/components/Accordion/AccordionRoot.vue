@@ -1,13 +1,23 @@
-<template>
-$END$
-</template>
+<script setup>
+import { provide, ref } from 'vue'
 
-<script>
-export default {
-name: "AccordionRoot.vue"
-}
+const props = defineProps({
+  multiple: {
+    type: Boolean,
+    default: false
+  }
+})
+
+const expandedItems = ref([])
+provide('expandedItems', expandedItems)
+
+provide('isMultiple', props.multiple)
 </script>
 
-<style scoped>
+<template>
+  <div id="accordionRoot" class="accordion-root">
+    <slot />
+  </div>
+</template>
 
-</style>
+
